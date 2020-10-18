@@ -16,7 +16,7 @@ namespace SY.Airport.AssetManagementPlatform.EntityFrameworkCore
             var configuration = BuildConfiguration();
 
             var builder = new DbContextOptionsBuilder<AssetManagementPlatformMigrationsDbContext>()
-                .UseSqlServer(configuration.GetConnectionString("Default"));
+                .UseMySql(configuration.GetConnectionString("Default"));
 
             return new AssetManagementPlatformMigrationsDbContext(builder.Options);
         }

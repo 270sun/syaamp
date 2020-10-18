@@ -401,7 +401,7 @@ namespace SY.Airport.AssetManagementPlatform.Migrations
                     ClientId = table.Column<string>(maxLength: 200, nullable: false),
                     CreationTime = table.Column<DateTime>(nullable: false),
                     Expiration = table.Column<DateTime>(nullable: true),
-                    Data = table.Column<string>(maxLength: 50000, nullable: false)
+                    Data = table.Column<string>(maxLength: 10000, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -472,7 +472,7 @@ namespace SY.Airport.AssetManagementPlatform.Migrations
                 {
                     table.PrimaryKey("PK_AbpOrganizationUnitRoles", x => new { x.OrganizationUnitId, x.RoleId });
                     table.ForeignKey(
-                        name: "FK_AbpOrganizationUnitRoles_AbpOrganizationUnits_OrganizationUnitId",
+                        name: "FK_AbpOrganizationUnitRoles_AbpOrganizationUnits_OrganizationUn~",
                         column: x => x.OrganizationUnitId,
                         principalTable: "AbpOrganizationUnits",
                         principalColumn: "Id",
@@ -581,7 +581,7 @@ namespace SY.Airport.AssetManagementPlatform.Migrations
                 {
                     table.PrimaryKey("PK_AbpUserOrganizationUnits", x => new { x.OrganizationUnitId, x.UserId });
                     table.ForeignKey(
-                        name: "FK_AbpUserOrganizationUnits_AbpOrganizationUnits_OrganizationUnitId",
+                        name: "FK_AbpUserOrganizationUnits_AbpOrganizationUnits_OrganizationUn~",
                         column: x => x.OrganizationUnitId,
                         principalTable: "AbpOrganizationUnits",
                         principalColumn: "Id",
@@ -651,7 +651,7 @@ namespace SY.Airport.AssetManagementPlatform.Migrations
                 {
                     table.PrimaryKey("PK_IdentityServerApiClaims", x => new { x.ApiResourceId, x.Type });
                     table.ForeignKey(
-                        name: "FK_IdentityServerApiClaims_IdentityServerApiResources_ApiResourceId",
+                        name: "FK_IdentityServerApiClaims_IdentityServerApiResources_ApiResour~",
                         column: x => x.ApiResourceId,
                         principalTable: "IdentityServerApiResources",
                         principalColumn: "Id",
@@ -674,7 +674,7 @@ namespace SY.Airport.AssetManagementPlatform.Migrations
                 {
                     table.PrimaryKey("PK_IdentityServerApiScopes", x => new { x.ApiResourceId, x.Name });
                     table.ForeignKey(
-                        name: "FK_IdentityServerApiScopes_IdentityServerApiResources_ApiResourceId",
+                        name: "FK_IdentityServerApiScopes_IdentityServerApiResources_ApiResour~",
                         column: x => x.ApiResourceId,
                         principalTable: "IdentityServerApiResources",
                         principalColumn: "Id",
@@ -686,7 +686,7 @@ namespace SY.Airport.AssetManagementPlatform.Migrations
                 columns: table => new
                 {
                     Type = table.Column<string>(maxLength: 250, nullable: false),
-                    Value = table.Column<string>(maxLength: 4000, nullable: false),
+                    Value = table.Column<string>(maxLength: 300, nullable: false),
                     ApiResourceId = table.Column<Guid>(nullable: false),
                     Description = table.Column<string>(maxLength: 2000, nullable: true),
                     Expiration = table.Column<DateTime>(nullable: true)
@@ -695,7 +695,7 @@ namespace SY.Airport.AssetManagementPlatform.Migrations
                 {
                     table.PrimaryKey("PK_IdentityServerApiSecrets", x => new { x.ApiResourceId, x.Type, x.Value });
                     table.ForeignKey(
-                        name: "FK_IdentityServerApiSecrets_IdentityServerApiResources_ApiResourceId",
+                        name: "FK_IdentityServerApiSecrets_IdentityServerApiResources_ApiResou~",
                         column: x => x.ApiResourceId,
                         principalTable: "IdentityServerApiResources",
                         principalColumn: "Id",
@@ -732,7 +732,7 @@ namespace SY.Airport.AssetManagementPlatform.Migrations
                 {
                     table.PrimaryKey("PK_IdentityServerClientCorsOrigins", x => new { x.ClientId, x.Origin });
                     table.ForeignKey(
-                        name: "FK_IdentityServerClientCorsOrigins_IdentityServerClients_ClientId",
+                        name: "FK_IdentityServerClientCorsOrigins_IdentityServerClients_Client~",
                         column: x => x.ClientId,
                         principalTable: "IdentityServerClients",
                         principalColumn: "Id",
@@ -768,7 +768,7 @@ namespace SY.Airport.AssetManagementPlatform.Migrations
                 {
                     table.PrimaryKey("PK_IdentityServerClientIdPRestrictions", x => new { x.ClientId, x.Provider });
                     table.ForeignKey(
-                        name: "FK_IdentityServerClientIdPRestrictions_IdentityServerClients_ClientId",
+                        name: "FK_IdentityServerClientIdPRestrictions_IdentityServerClients_Cl~",
                         column: x => x.ClientId,
                         principalTable: "IdentityServerClients",
                         principalColumn: "Id",
@@ -780,13 +780,13 @@ namespace SY.Airport.AssetManagementPlatform.Migrations
                 columns: table => new
                 {
                     ClientId = table.Column<Guid>(nullable: false),
-                    PostLogoutRedirectUri = table.Column<string>(maxLength: 2000, nullable: false)
+                    PostLogoutRedirectUri = table.Column<string>(maxLength: 300, nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_IdentityServerClientPostLogoutRedirectUris", x => new { x.ClientId, x.PostLogoutRedirectUri });
                     table.ForeignKey(
-                        name: "FK_IdentityServerClientPostLogoutRedirectUris_IdentityServerClients_ClientId",
+                        name: "FK_IdentityServerClientPostLogoutRedirectUris_IdentityServerCli~",
                         column: x => x.ClientId,
                         principalTable: "IdentityServerClients",
                         principalColumn: "Id",
@@ -817,13 +817,13 @@ namespace SY.Airport.AssetManagementPlatform.Migrations
                 columns: table => new
                 {
                     ClientId = table.Column<Guid>(nullable: false),
-                    RedirectUri = table.Column<string>(maxLength: 2000, nullable: false)
+                    RedirectUri = table.Column<string>(maxLength: 300, nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_IdentityServerClientRedirectUris", x => new { x.ClientId, x.RedirectUri });
                     table.ForeignKey(
-                        name: "FK_IdentityServerClientRedirectUris_IdentityServerClients_ClientId",
+                        name: "FK_IdentityServerClientRedirectUris_IdentityServerClients_Clien~",
                         column: x => x.ClientId,
                         principalTable: "IdentityServerClients",
                         principalColumn: "Id",
@@ -853,7 +853,7 @@ namespace SY.Airport.AssetManagementPlatform.Migrations
                 columns: table => new
                 {
                     Type = table.Column<string>(maxLength: 250, nullable: false),
-                    Value = table.Column<string>(maxLength: 4000, nullable: false),
+                    Value = table.Column<string>(maxLength: 300, nullable: false),
                     ClientId = table.Column<Guid>(nullable: false),
                     Description = table.Column<string>(maxLength: 2000, nullable: true),
                     Expiration = table.Column<DateTime>(nullable: true)
@@ -880,7 +880,7 @@ namespace SY.Airport.AssetManagementPlatform.Migrations
                 {
                     table.PrimaryKey("PK_IdentityServerIdentityClaims", x => new { x.IdentityResourceId, x.Type });
                     table.ForeignKey(
-                        name: "FK_IdentityServerIdentityClaims_IdentityServerIdentityResources_IdentityResourceId",
+                        name: "FK_IdentityServerIdentityClaims_IdentityServerIdentityResources~",
                         column: x => x.IdentityResourceId,
                         principalTable: "IdentityServerIdentityResources",
                         principalColumn: "Id",
@@ -922,7 +922,7 @@ namespace SY.Airport.AssetManagementPlatform.Migrations
                 {
                     table.PrimaryKey("PK_IdentityServerApiScopeClaims", x => new { x.ApiResourceId, x.Name, x.Type });
                     table.ForeignKey(
-                        name: "FK_IdentityServerApiScopeClaims_IdentityServerApiScopes_ApiResourceId_Name",
+                        name: "FK_IdentityServerApiScopeClaims_IdentityServerApiScopes_ApiReso~",
                         columns: x => new { x.ApiResourceId, x.Name },
                         principalTable: "IdentityServerApiScopes",
                         principalColumns: new[] { "ApiResourceId", "Name" },
@@ -935,7 +935,7 @@ namespace SY.Airport.AssetManagementPlatform.Migrations
                 column: "AuditLogId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_AbpAuditLogActions_TenantId_ServiceName_MethodName_ExecutionTime",
+                name: "IX_AbpAuditLogActions_TenantId_ServiceName_MethodName_Execution~",
                 table: "AbpAuditLogActions",
                 columns: new[] { "TenantId", "ServiceName", "MethodName", "ExecutionTime" });
 
