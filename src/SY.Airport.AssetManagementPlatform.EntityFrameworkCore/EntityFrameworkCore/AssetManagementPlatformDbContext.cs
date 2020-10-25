@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using SY.Airport.AssetManagementPlatform.Books;
 using SY.Airport.AssetManagementPlatform.Users;
 using Volo.Abp.Data;
 using Volo.Abp.EntityFrameworkCore;
@@ -21,7 +22,8 @@ namespace SY.Airport.AssetManagementPlatform.EntityFrameworkCore
     public class AssetManagementPlatformDbContext : AbpDbContext<AssetManagementPlatformDbContext>
     {
         public DbSet<AppUser> Users { get; set; }
-
+        public DbSet<Book> Books { get; set; }
+        
         /* Add DbSet properties for your Aggregate Roots / Entities here.
          * Also map them inside AssetManagementPlatformDbContextModelCreatingExtensions.ConfigureAssetManagementPlatform
          */

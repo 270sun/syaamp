@@ -1,5 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using SY.Airport.AssetManagementPlatform.Books;
 using Volo.Abp;
+using Volo.Abp.EntityFrameworkCore.Modeling;
 
 namespace SY.Airport.AssetManagementPlatform.EntityFrameworkCore
 {
@@ -17,6 +19,13 @@ namespace SY.Airport.AssetManagementPlatform.EntityFrameworkCore
             //    b.ConfigureByConvention(); //auto configure for the base class props
             //    //...
             //});
+
+            builder.Entity<Book>(b =>
+            {
+                b.ToTable(AssetManagementPlatformConsts.DbTablePrefix + "Books", AssetManagementPlatformConsts.DbSchema);
+                b.ConfigureByConvention();
+                b.Property(x => x.Name).IsRequired().HasMaxLength(128);
+            });
         }
     }
 }
